@@ -84,8 +84,7 @@ def send_transactions(
     num_additions = len(addition_list)
     num_batches = (num_additions + 14) // 15
     for i in range(num_batches):
-        batch = addition_list[i * 15:(i + 1) * 15]
-        if batch:
+        if batch := addition_list[i * 15 : (i + 1) * 15]:
             transaction = wallet.send_transaction_multi(
                 wallet_id=wallet_id, additions=batch, fee=5000000, coins=coins, coin_announcements=coin_announcements, puzzle_announcements=puzzle_announcements)
             print(transaction)
